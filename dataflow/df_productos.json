@@ -76,7 +76,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          restaurante_id = producto_id,",
+				"          producto_menu_id = producto_id,",
 				"          nombre_item = nombre_producto,",
 				"          categoria,",
 				"          precio = costo_estimado,",

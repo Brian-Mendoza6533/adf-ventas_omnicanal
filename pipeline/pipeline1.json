@@ -202,7 +202,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_invntario_diario",
+						"referenceName": "df_inventario_diario",
 						"type": "DataFlowReference"
 					},
 					"compute": {
