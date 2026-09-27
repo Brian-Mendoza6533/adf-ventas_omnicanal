@@ -1,5 +1,5 @@
 {
-	"name": "df_productos",
+	"name": "df_productos_menu",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -54,9 +54,9 @@
 				"          disponible = initCap(lower(trim(disponible)))) ~> derivedColumn1",
 				"derivedColumn1 split(!isNull(producto_id) && !isNull(precio_lista) && !isNull(costo_estimado) && !isNull(categoria),",
 				"     disjoint: false) ~> split1@(validos, rechazados)",
-				"aggregate1 derive(precio_lista = toDecimal(precio_lista) ,",
+				"aggregate1 derive(precio_lista = toDecimal(precio_lista),",
 				"          costo_estimado = toDecimal(costo_estimado),",
-				"          producto_id = producto_id,",
+				"          producto_menu_id = producto_id,",
 				"          nombre_producto = nombre_producto,",
 				"          categoria = categoria,",
 				"          disponible = disponible) ~> derivedColumn2",
@@ -84,7 +84,7 @@
 				"     skipDuplicateMapOutputs: true,",
 				"     errorHandlingOption: 'stopOnFirstError',",
 				"     mapColumn(",
-				"          producto_menu_id = producto_id,",
+				"          producto_menu_id,",
 				"          nombre_item = nombre_producto,",
 				"          categoria,",
 				"          precio = costo_estimado,",
