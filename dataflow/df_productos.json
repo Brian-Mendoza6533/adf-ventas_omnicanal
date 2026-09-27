@@ -70,7 +70,6 @@
 				"     validateSchema: false,",
 				"     input(",
 				"          producto_menu_id as string,",
-				"          restaurante_id as string,",
 				"          nombre_item as string,",
 				"          categoria as string,",
 				"          precio as decimal(12,2),",

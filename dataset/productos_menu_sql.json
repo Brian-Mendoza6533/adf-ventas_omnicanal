@@ -16,10 +16,6 @@
 				"type": "varchar"
 			},
 			{
-				"name": "restaurante_id",
-				"type": "varchar"
-			},
-			{
 				"name": "nombre_item",
 				"type": "nvarchar"
 			},
