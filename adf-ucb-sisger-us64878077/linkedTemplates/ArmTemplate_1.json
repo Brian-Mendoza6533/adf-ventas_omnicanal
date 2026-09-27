@@ -561,6 +561,7 @@
 						"     errorHandlingOption: 'stopOnFirstError',",
 						"     mapColumn(",
 						"          detalle_id,",
+						"          venta_id = pedido_id,",
 						"          producto_id,",
 						"          cantidad,",
 						"          precio_unitario,",
