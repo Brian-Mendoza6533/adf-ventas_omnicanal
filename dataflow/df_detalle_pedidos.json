@@ -33,6 +33,9 @@
 				},
 				{
 					"name": "filter1"
+				},
+				{
+					"name": "split2"
 				}
 			],
 			"scriptLines": [
@@ -56,7 +59,9 @@
 				"split1@validos derive(cantidad = toInteger(cantidad),",
 				"          precio_unitario = toDecimal(precio_unitario),",
 				"          total_linea = total_linea) ~> derivedColumn2",
-				"source1 filter(toInteger(cantidad) > 0) ~> filter1",
+				"split2@PedidosValidos filter(toInteger(cantidad) > 0) ~> filter1",
+				"source1 split(!isNull(pedido_id) && length(pedido_id) > 0,",
+				"     disjoint: false) ~> split2@(PedidosValidos, PedidosRechazados)",
 				"derivedColumn2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
