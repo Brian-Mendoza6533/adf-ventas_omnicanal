@@ -109,7 +109,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_productos",
+						"referenceName": "df_sucursales",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -140,7 +140,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_promociones",
+						"referenceName": "df_productos",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -171,7 +171,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_sucursales",
+						"referenceName": "df_promociones",
 						"type": "DataFlowReference"
 					},
 					"compute": {

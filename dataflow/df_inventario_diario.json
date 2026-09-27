@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "derivedColumn2"
 				}
 			],
 			"scriptLines": [
@@ -48,8 +51,10 @@
 				"          stock_final = toInteger(stock_final),",
 				"          punto_reorden = toInteger(punto_reorden)\r",
 				"\r",
-				") ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				",",
+				"          producto_id = toString(producto_id)) ~> derivedColumn1",
+				"derivedColumn1 derive(producto_id = iif(isNull(producto_id) || producto_id == '', 'PROD_DEFAULT', producto_id)) ~> derivedColumn2",
+				"derivedColumn2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          inventario_id as string,",
