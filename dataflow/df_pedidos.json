@@ -30,6 +30,9 @@
 				},
 				{
 					"name": "filter1"
+				},
+				{
+					"name": "aggregate1"
 				}
 			],
 			"scriptLines": [
@@ -59,7 +62,10 @@
 				"          subtotal = toDecimal(subtotal),",
 				"          estado_pedido = estado_pedido) ~> derivedColumn2",
 				"derivedColumn2 filter(toDecimal(total_pedido) >= 0) ~> filter1",
-				"filter1 sink(allowSchemaDrift: true,",
+				"filter1 aggregate(groupBy(pedido_id),",
+				"     cliente_id = first(cliente_id),",
+				"          fecha_pedido = first(fecha_pedido)) ~> aggregate1",
+				"aggregate1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          venta_id as string,",
@@ -83,12 +89,7 @@
 				"     mapColumn(",
 				"          venta_id = pedido_id,",
 				"          fecha_venta = fecha_pedido,",
-				"          cliente_id,",
-				"          sucursal_id,",
-				"          canal,",
-				"          promocion_id,",
-				"          estado_venta = estado_pedido,",
-				"          total_venta = total_pedido",
+				"          cliente_id",
 				"     )) ~> sink1"
 			]
 		}
