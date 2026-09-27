@@ -2176,7 +2176,8 @@
 						"          producto_id,",
 						"          cantidad,",
 						"          precio_unitario,",
-						"          subtotal = total_linea",
+						"          subtotal = total_linea,",
+						"          descuento = descuento_linea",
 						"     )) ~> sink1"
 					]
 				}
