@@ -1,5 +1,5 @@
 {
-	"name": "df_detalle",
+	"name": "df_detalle_pedidos",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
