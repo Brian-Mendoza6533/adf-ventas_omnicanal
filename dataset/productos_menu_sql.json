@@ -1,0 +1,46 @@
+{
+	"name": "productos_menu_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_omnicanal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "producto_menu_id",
+				"type": "varchar"
+			},
+			{
+				"name": "restaurante_id",
+				"type": "varchar"
+			},
+			{
+				"name": "nombre_item",
+				"type": "nvarchar"
+			},
+			{
+				"name": "categoria",
+				"type": "nvarchar"
+			},
+			{
+				"name": "precio",
+				"type": "decimal",
+				"precision": 12,
+				"scale": 2
+			},
+			{
+				"name": "disponible",
+				"type": "bit"
+			}
+		],
+		"typeProperties": {
+			"schema": "ventas_omnicanal",
+			"table": "productos_menu"
+		}
+	}
+}

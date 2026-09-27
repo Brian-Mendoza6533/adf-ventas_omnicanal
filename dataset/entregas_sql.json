@@ -1,0 +1,52 @@
+{
+	"name": "entregas_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_omnicanal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "entrega_id",
+				"type": "varchar"
+			},
+			{
+				"name": "venta_id",
+				"type": "varchar"
+			},
+			{
+				"name": "repartidor_id",
+				"type": "varchar"
+			},
+			{
+				"name": "tiempo_entrega_min",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "costo_envio",
+				"type": "decimal",
+				"precision": 12,
+				"scale": 2
+			},
+			{
+				"name": "calificacion_repartidor",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "estado_entrega",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "ventas_omnicanal",
+			"table": "entregas"
+		}
+	}
+}

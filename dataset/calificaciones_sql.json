@@ -1,0 +1,41 @@
+{
+	"name": "calificaciones_sql",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sql_omnicanal",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sql"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "calificacion_id",
+				"type": "varchar"
+			},
+			{
+				"name": "venta_id",
+				"type": "varchar"
+			},
+			{
+				"name": "puntuacion",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "comentario",
+				"type": "nvarchar"
+			},
+			{
+				"name": "fecha_calificacion",
+				"type": "date"
+			}
+		],
+		"typeProperties": {
+			"schema": "ventas_omnicanal",
+			"table": "calificaciones"
+		}
+	}
+}
