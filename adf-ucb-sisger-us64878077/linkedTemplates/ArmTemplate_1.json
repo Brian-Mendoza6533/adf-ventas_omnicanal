@@ -375,7 +375,7 @@
 						"     mapColumn(",
 						"          calificacion_id,",
 						"          venta_id,",
-						"          puntuacion = calificacion_id,",
+						"          puntuacion,",
 						"          comentario,",
 						"          fecha_calificacion",
 						"     )) ~> sink1"
