@@ -24,7 +24,7 @@
 				"type": "varchar"
 			},
 			{
-				"name": "producto_id",
+				"name": "producto_menu_id",
 				"type": "varchar"
 			},
 			{
@@ -39,16 +39,6 @@
 			},
 			{
 				"name": "salidas",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "stock_final",
-				"type": "int",
-				"precision": 10
-			},
-			{
-				"name": "stock_minimo",
 				"type": "int",
 				"precision": 10
 			}
