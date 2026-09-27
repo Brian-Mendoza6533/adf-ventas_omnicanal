@@ -1,0 +1,80 @@
+{
+	"name": "df_entregas",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "entregas_csv",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "entregas_sql",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				},
+				{
+					"name": "split1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          entrega_id as string,",
+				"          pedido_id as string,",
+				"          repartidor_id as string,",
+				"          hora_salida as string,",
+				"          hora_entrega as string,",
+				"          tiempo_entrega_min as string,",
+				"          distancia_km as string,",
+				"          estado_entrega as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> source1",
+				"source1 derive(hora_salida = trim(hora_salida),",
+				"          estado_entrega = trim(estado_entrega),",
+				"          distancia_km = distancia_km) ~> derivedColumn1",
+				"derivedColumn1 split(!isNull(hora_entrega) && toInteger(tiempo_entrega_min) >= 0,",
+				"     disjoint: false) ~> split1@(validos, cancelados)",
+				"split1@validos sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          entrega_id as string,",
+				"          venta_id as string,",
+				"          repartidor_id as string,",
+				"          tiempo_entrega_min as integer,",
+				"          costo_envio as decimal(12,2),",
+				"          calificacion_repartidor as integer,",
+				"          estado_entrega as string",
+				"     ),",
+				"     deletable:false,",
+				"     insertable:true,",
+				"     updateable:false,",
+				"     upsertable:false,",
+				"     format: 'table',",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true,",
+				"     errorHandlingOption: 'stopOnFirstError',",
+				"     mapColumn(",
+				"          entrega_id,",
+				"          venta_id = pedido_id,",
+				"          repartidor_id,",
+				"          tiempo_entrega_min,",
+				"          estado_entrega",
+				"     )) ~> sink1"
+			]
+		}
+	}
+}
