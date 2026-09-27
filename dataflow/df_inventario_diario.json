@@ -44,7 +44,7 @@
 				"source1 derive(fecha_inventario = toDate(fecha_inventario, 'yyyy-MM-dd'),",
 				"          stock_inicial = toInteger(stock_inicial),",
 				"          entradas = toInteger(entradas),",
-				"          salidas = toInteger(salidas),",
+				"          salidas = iif(isNull(salidas) || salidas == '', 0, toInteger(salidas)),",
 				"          stock_final = toInteger(stock_final),",
 				"          punto_reorden = toInteger(punto_reorden)\r",
 				"\r",

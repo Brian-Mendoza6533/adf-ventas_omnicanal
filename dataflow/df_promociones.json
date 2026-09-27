@@ -24,6 +24,9 @@
 			"transformations": [
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "split1"
 				}
 			],
 			"scriptLines": [
@@ -40,7 +43,9 @@
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 derive(fecha_inicio = toDate(fecha_inicio, 'yyyy-MM-dd'),",
 				"          fecha_fin = toDate(fecha_fin, 'yyyy-MM-dd')) ~> derivedColumn1",
-				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"derivedColumn1 split(fecha_inicio <= fecha_fin,",
+				"     disjoint: false) ~> split1@(validos, rechazados)",
+				"split1@validos sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     input(",
 				"          promocion_id as string,",
